@@ -1,1 +1,1 @@
-# StichHelper
+# StitchHelper
