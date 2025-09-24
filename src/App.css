@@ -1,6 +1,11 @@
-#root {
-  margin: 0 auto;
-  text-align: center;
+.background {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFEE5;
+  min-width: 320px;
+  min-height: 100vh;
 }
 
 .box {
@@ -12,6 +17,7 @@
   width: 90vw;
   height: 90vh;
   border-radius: 15px;
+  text-align: center;
 }
 
 .start {
@@ -22,11 +28,17 @@
   left: 50%;
   font-size: 4vh;
   text-align: center;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
 }
 
 .logo {
   height: 75%;
-  color: green;
   top: 50%;
   left: 50%;
 }
