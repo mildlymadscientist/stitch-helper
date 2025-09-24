@@ -25,7 +25,6 @@ axios.post('https://api.openai.com/v1/engines/davinci-codex/completions',
     });
 
 //from https://stackoverflow.com/questions/40635979/how-to-correctly-extract-text-from-a-pdf-using-pdf-js
-
 function gettext(pdfUrl) {
     var pdf = pdfjsLib.getDocument(pdfUrl);
     return pdf.then(function (pdf) { // get all pages text
@@ -56,3 +55,5 @@ gettext("https://cdn.mozilla.net/pdfjs/tracemonkey.pdf").then(function (text) {
     function (reason) {
         console.error(reason);
     });
+
+//<script src="https://npmcdn.com/pdfjs-dist/build/pdf.js"></script>
