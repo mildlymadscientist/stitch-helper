@@ -21,6 +21,7 @@ function Loading() {
                     <img src={logo} className={"header-logo"} alt={"Stitch Helper Logo"}></img>
                     <h1 className={"title"}>Stitch Helper</h1>
                 </header>
+                <h2 className={"welcome"}>Welcome to Stitch Helper! Upload a pattern to start.</h2>
                 <div className={"upload-area"}>
                     <input type={"file"} className={"upload"} onChange={handleFileUpload} />
                     <img src={upload} className={"upload-img"} alt={"Click to Upload"}></img>
