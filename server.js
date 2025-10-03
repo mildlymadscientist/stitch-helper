@@ -2,6 +2,18 @@
 require('dotenv').config();
 const OpenAI = require('openai');
 
+const http = require('http'),
+      fs = require('fs'),
+      mime = require( "mime" ),
+      dir = "./src",
+      port = 3000;
+
+const server = http.createServer((req, res) => {
+    if (req.method === "POST") {
+        handlePost(req, res)
+    }
+})
+
 const openai = new OpenAI(process.env.OPENAI_API_KEY);
 
 //using axios
@@ -57,3 +69,9 @@ gettext("https://cdn.mozilla.net/pdfjs/tracemonkey.pdf").then(function (text) {
     });
 
 //<script src="https://npmcdn.com/pdfjs-dist/build/pdf.js"></script>
+
+const handlePost = function (req, res) {
+    // do something that sends data to AI API and then sends info back
+}
+
+server.listen( process.env.PORT || 3000 )
