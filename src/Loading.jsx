@@ -6,17 +6,31 @@ import pinkLogo from "./assets/SHLogoPink.png";
 
 function Loading() {
     // maybe doesn't work (will fix soon)
-    const [pattern, setPattern] = useState(null);
+    const [response, setResponse] = useState(null);
     const [havePattern, setHavePattern] = useState(false);
+    const [haveResponse, setHaveResponse] = useState(false);
 
-    const handleFileUpload = (e) => {
-        setPattern(e.target.files[0]);
+    const handleFileUpload = async (e) => {
+        const pattern = e.target.files[0];
         setHavePattern(true);
+
+        const formData = new FormData();
+        formData.append('pdfFile', pattern)
+
+        const res = await fetch("http://localhost:5000/upload", {
+            method: 'POST',
+            body: formData,
+        })
+
+        const data = await res.json();
+
+        setResponse(data)
+        setHaveResponse(true);
     }
 
     return (
         <>
-            {!havePattern && (<div className="background">
+            {!havePattern && !haveResponse && (<div className="background">
                 <header className={"header"}>
                     <img src={logo} className={"header-logo"} alt={"Stitch Helper Logo"}></img>
                     <h1 className={"title"}>Stitch Helper</h1>
@@ -27,12 +41,17 @@ function Loading() {
                     <img src={upload} className={"upload-img"} alt={"Click to Upload"}></img>
                 </div>
             </div>)}
-            {havePattern && (
+            {havePattern && !haveResponse && (
                 <div className={"loading"}>
                     <div className={"scanning-box"}>
                         <img src={pinkLogo} className={"scanning-logo"} alt={"Stitch Helper Logo"}></img>
                         <h2>Scanning Pattern...</h2>
                     </div>
+                </div>
+            )}
+            {havePattern && haveResponse && (
+                <div>
+                    {response}
                 </div>
             )}
         </>
