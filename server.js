@@ -1,5 +1,6 @@
 //Takes PDF and sends it alongside instructions to OpenAI API
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 const OpenAI = require('openai');
 
 const http = require('http'),
